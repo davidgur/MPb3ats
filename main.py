@@ -41,6 +41,8 @@ for i, key in enumerate(keys):
     if key != 0:
         beats_played[i] = key
 
+
+
 with open('output.json', 'w') as f:
     json.dump(beats_played, f, indent=4)
 
