@@ -1,7 +1,6 @@
 import sys
 import json
 import random
-import socket
 import multiprocessing
 
 import numpy as np
@@ -9,6 +8,7 @@ import librosa
 import librosa.display
 
 from scipy import signal
+from flask import Flask, request
 
 class MP3Processor():
     def __init__(self, f):
@@ -32,28 +32,16 @@ class MP3Processor():
 
         return beats_played_str
 
+app = Flask(__name__)
 
-HOST = '127.0.0.1'
-PORT = 65432
+@app.route('/', methods=['GET'])
+def index():
+    f = request.args.get('filename')
+    
+    my_processor = MP3Processor(f)
+    my_processor.get_beat_locs()
+    return my_processor.export()
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((HOST, PORT))
-    while True:
-        s.listen()
-        conn, addr = s.accept()
-        with conn:
-            print('Connected by', addr)
-            while True:
-                data = conn.recv(1024)
-                if not data:
-                    break
-                f = data.decode("utf-8")
-                my_processor = MP3Processor(f)
-                my_processor.get_beat_locs()
-                beat_locs = my_processor.export()
+if __name__ == '__main__':
+    app.run(debug=True, port=65432)
 
-                conn.sendall(str.encode(beat_locs))
-                print(data.decode("utf-8"))
-
-                del my_processor
-                break
