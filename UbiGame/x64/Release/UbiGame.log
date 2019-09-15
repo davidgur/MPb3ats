@@ -1,0 +1,13 @@
+﻿  GameBoard.cpp
+C:\Users\kevin\Desktop\UbiGame_Blank\UbiGame\Source\Game\GameBoard.cpp(74,40): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  Generating code
+  3 of 743 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  Finished generating code
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  UbiGame.vcxproj -> C:\Users\kevin\Desktop\UbiGame_Blank\x64\Release\UbiGame.exe
+  C:\Users\kevin\Desktop\UbiGame_Blank\UbiGame\Resources\audio\twang.wav
+  C:\Users\kevin\Desktop\UbiGame_Blank\UbiGame\Resources\img\gears-blue.png
+  C:\Users\kevin\Desktop\UbiGame_Blank\UbiGame\Resources\img\gears-red.png
+  C:\Users\kevin\Desktop\UbiGame_Blank\UbiGame\Resources\img\gears-yellow.png
+  4 File(s) copied
